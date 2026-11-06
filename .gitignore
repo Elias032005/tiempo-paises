@@ -1,0 +1,22 @@
+# Dependencies
+/node_modules/
+
+# Next.js build output
+/.next/
+/out/
+/build/
+
+# Environment files and secrets
+.env*
+!.env.example
+!.env.*.example
+
+# Deployment and Supabase local state
+/.vercel/
+/supabase/.temp/
+
+# Private keys, logs, and local coverage output
+*.pem
+*.log
+/coverage/
+.DS_Store
