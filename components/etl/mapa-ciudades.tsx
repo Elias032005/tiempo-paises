@@ -18,6 +18,7 @@ import {
   WindIcon,
   XIcon,
 } from "lucide-react"
+import Image from "next/image"
 import { useTheme } from "next-themes"
 
 import { useFiltroVisual } from "@/components/filtro-visual"
@@ -384,6 +385,14 @@ export function MapaCiudades({ etl }: { etl: PipelineEtl }) {
       <div className="absolute inset-0">
         <div ref={lienzoRef} className="size-full" />
       </div>
+
+      <Image
+        src="/camaron.png"
+        alt=""
+        width={761}
+        height={1239}
+        className="pointer-events-none absolute bottom-0 left-0 z-30 h-32 w-auto select-none object-contain sm:h-40"
+      />
 
       {vintage && (
         <>
