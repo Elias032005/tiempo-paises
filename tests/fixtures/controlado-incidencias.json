@@ -1,0 +1,14 @@
+{
+  "_descripcion": "FIXTURE CONTROLADO (no son datos reales). Solo para pruebas de nulos, tipos, longitudes y duplicados.",
+  "latitude": 0,
+  "longitude": 0,
+  "utc_offset_seconds": 0,
+  "timezone": "GMT",
+  "hourly_units": { "time": "iso8601", "temperature_2m": "°C", "relative_humidity_2m": "%", "precipitation": "mm" },
+  "hourly": {
+    "time": ["2026-09-01T00:00", "2026-09-01T01:00", "2026-09-01T02:00", "2026-09-01T03:00", "2026-09-01T03:00", "2026-09-01T05:00", "2026-09-01T06:00", "no-es-fecha"],
+    "temperature_2m": [10.0, null, 12.0, 13.0, 13.5, -45.2, 15.0, 16.0],
+    "relative_humidity_2m": [50, 60, "", 70, 71, 80, 105, 40],
+    "precipitation": [0.0, 0.2, 0.0, 1.4, 0.0, 0.0, 0.3]
+  }
+}
