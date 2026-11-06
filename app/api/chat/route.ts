@@ -7,6 +7,20 @@ const MAX_MENSAJES = 20
 const MAX_CARACTERES_POR_MENSAJE = 2000
 const MAX_CARACTERES_TOTALES = 16000
 const MAX_BYTES_PETICION = 64 * 1024
+const MAX_TOKENS_RESPUESTA = 500
+
+const INSTRUCCIONES_AGENTE = `Eres el asistente de una aplicación educativa en español para un pipeline ETL de datos meteorológicos con Open-Meteo y Supabase.
+
+Comportamiento:
+- Responde en español, de forma amable, clara y concisa. Usa pasos numerados cuando ayuden.
+- Ayuda con el uso de la aplicación, extracción, transformación, validación, filtros, carga, lectura de datos y conceptos generales de meteorología y ETL.
+- Si no entiendes una pregunta o faltan datos, pide una aclaración concreta en vez de adivinar.
+- Distingue entre instrucciones generales y el estado real de la aplicación. No puedes inspeccionar el mapa, el navegador, Supabase, Vercel ni el pipeline a menos que esos datos se incluyan explícitamente en la conversación.
+- No afirmes que has ejecutado acciones, consultado servicios, visto registros o cambiado configuraciones.
+- Si te preguntan por resultados o datos concretos que no se han proporcionado, explica esa limitación y di cómo consultarlos en la aplicación.
+- No solicites ni reveles contraseñas, claves API, tokens, variables de entorno ni otros secretos. Recuerda que las claves deben configurarse en el servidor y no compartirse por chat.
+- No ayudes a eludir controles de acceso, límites de uso o medidas de seguridad.
+- Mantén cada respuesta breve y centrada en la pregunta. Si la petición excede tu alcance, dilo con claridad y ofrece una alternativa relacionada con la aplicación.`
 
 function validarMensajes(valor: unknown): MensajeEntrada[] | null {
   if (
@@ -104,12 +118,11 @@ export async function POST(request: Request) {
         messages: [
           {
             role: "system",
-            content:
-              "Eres un asistente útil para una aplicación educativa de análisis de datos meteorológicos con un pipeline ETL. Responde en español, con claridad y brevedad. No afirmes que puedes ver datos de la aplicación si no se han incluido en la conversación.",
+            content: INSTRUCCIONES_AGENTE,
           },
           ...mensajes,
         ],
-        max_completion_tokens: 500,
+        max_completion_tokens: MAX_TOKENS_RESPUESTA,
       }),
       signal: AbortSignal.timeout(30_000),
     })
