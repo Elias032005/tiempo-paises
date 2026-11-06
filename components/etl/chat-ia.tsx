@@ -62,7 +62,12 @@ export function ChatIa() {
       const respuesta = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ mensajes: conversacion }),
+        body: JSON.stringify({
+          mensajes: conversacion.map((mensaje) => ({
+            role: mensaje.rol,
+            content: mensaje.contenido,
+          })),
+        }),
       })
       const resultado: unknown = await respuesta.json()
 
