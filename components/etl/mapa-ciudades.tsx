@@ -18,7 +18,6 @@ import {
   WindIcon,
   XIcon,
 } from "lucide-react"
-import Image from "next/image"
 import { useTheme } from "next-themes"
 
 import { useFiltroVisual } from "@/components/filtro-visual"
@@ -34,6 +33,7 @@ import { MarcoVintage, RosaVientos } from "./adornos-vintage"
 import { iconoVintage, useCriaturasVintage } from "./decoracion-vintage"
 import { estiloVintage } from "./estilo-vintage"
 import { formatoEntero, formatoMedida, formatoPorcentaje } from "./formato"
+import { ChatIa } from "./chat-ia"
 
 const CLAVE_MAPTILER = process.env.NEXT_PUBLIC_MAPTILER_KEY
 
@@ -386,13 +386,7 @@ export function MapaCiudades({ etl }: { etl: PipelineEtl }) {
         <div ref={lienzoRef} className="size-full" />
       </div>
 
-      <Image
-        src="/camaron.png"
-        alt=""
-        width={761}
-        height={1239}
-        className="pointer-events-none absolute bottom-0 left-0 z-30 h-32 w-auto select-none object-contain sm:h-40"
-      />
+      <ChatIa />
 
       {vintage && (
         <>

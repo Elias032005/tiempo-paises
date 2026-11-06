@@ -16,10 +16,14 @@ cp .env.example .env.local   # y rellena los valores
 | --- | --- | --- |
 | `SUPABASE_URL` | servidor | URL del proyecto. También se acepta `NEXT_PUBLIC_SUPABASE_URL`. |
 | `SUPABASE_SECRET_KEY` | **solo servidor** | Clave `sb_secret_…` (o la *service_role* antigua en `SUPABASE_SERVICE_ROLE_KEY`). Nunca con prefijo `NEXT_PUBLIC_`. |
+| `OPENAI_API_KEY` | **solo servidor** | Clave API de OpenAI para el chat. Configúrala también en Vercel como variable de entorno; nunca uses el prefijo `NEXT_PUBLIC_`. |
 | `NEXT_PUBLIC_MAPTILER_KEY` | navegador | Opcional. Mapas base de MapTiler; sin ella se usa OpenFreeMap. |
 | `ETL_PERMITIR_EN_PRODUCCION` | servidor | Opcional. Ver «Seguridad». |
 
 La clave publicable no es necesaria: el navegador nunca habla con Supabase.
+El chat usa la API de OpenAI desde el servidor. Como no requiere inicio de sesión,
+cualquier visitante puede enviar mensajes y consumir la cuota de la cuenta cuya
+clave esté configurada.
 
 ### Crear la tabla
 
